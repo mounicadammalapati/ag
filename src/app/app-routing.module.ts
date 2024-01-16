@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TodolistComponent } from './todolist/todolist.component';
-import { DailytasksComponent } from './dailytasks/dailytasks.component';
-import { WeatherComponent } from './weather/weather.component';
-
+import { DashboardComponent } from './dashboard/dashboard.component';
 const routes: Routes = [
- // {path:'menu',component:MenuComponent},
-  {path:'weather',component:WeatherComponent},
-  {path:'todolist',component:TodolistComponent,
-    children:[
-      {path:'dailytasks',component:DailytasksComponent}
-    ]  
+  {
+    path: '',
+    component: DashboardComponent
+  },
+  {
+    path: 'ecomm',
+    loadChildren: () => import('./ecomm/ecomm.module').then(m => m.EcommModule)
+  },
+  {
+    path: 'dailyinsights',
+    loadChildren: () => import('./dailyinsights/dailyinsights.module').then(m => m.DailyinsightsModule)
   }
- // {path:'todolist/dailytasks',component:DailytasksComponent}
+  
 ];
 
 

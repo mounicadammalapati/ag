@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import {MediaMatcher} from '@angular/cdk/layout';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -8,24 +8,14 @@ import {MediaMatcher} from '@angular/cdk/layout';
 })
 export class AppComponent {
   title = 'angular-azure';
-
-
-
   private _mobileQueryListener: () => void;
-
   mobileQuery: MediaQueryList;
+  isExpanded:boolean=false;
 
-  
-  //private _mobileQueryListener: () => void;
-
- 
-  constructor(changeDetectorRef:ChangeDetectorRef,media:MediaMatcher)
-  {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
-
-
 
 }
